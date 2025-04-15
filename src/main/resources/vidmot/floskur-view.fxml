@@ -42,8 +42,7 @@
         <Label fx:id="amountGreida" text="0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
         <Label fx:id="ISKGreida" text="0 ISK" GridPane.columnIndex="2" GridPane.rowIndex="3" />
 
-        <!-- Neue Elemente für die Währungsauswahl -->
-        <Label text="Währung" GridPane.rowIndex="5" />
+        <Label text="Currency" GridPane.rowIndex="5" />
         <HBox alignment="CENTER_LEFT" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="5">
             <ComboBox fx:id="currencyComboBox" prefWidth="150.0" onAction="#onCurrencyChanged" />
         </HBox>

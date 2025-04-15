@@ -7,9 +7,8 @@ public class Floskur {
     private int dosir;
     private int floskur;
     public CurrencyConverter currencyConverter;
-    private String selectedCurrency = "ISK"; // Default currency
-    private int iskGreidaValue = 0; // ISK-Wert für Greida
-    // Neue Felder für die ursprünglichen ISK-Werte
+    private String selectedCurrency = "ISK";
+    private int iskGreidaValue = 0;
     private int iskDosirValue = 0;
     private int iskFloskurValue = 0;
 
@@ -17,7 +16,6 @@ public class Floskur {
     private static final int VALUE_FLOSKUR = 25;
 
     public Floskur() {
-        // Initialize the converter
         this.currencyConverter = new CurrencyConverter();
     }
 
@@ -40,54 +38,54 @@ public class Floskur {
     }
 
     /**
-     * Speichert den ISK-Wert für Greida.
+     * Saves ISK-Value for Greida.
      *
-     * @param value der ISK-Wert
+     * @param value  ISK-Value
      */
     public void setISKGreidaValue(int value) {
         this.iskGreidaValue = value;
     }
 
     /**
-     * Gibt den gespeicherten ISK-Wert für Greida zurück.
      *
-     * @return der gespeicherte ISK-Wert
+     *
+     * @return saved ISK-Value
      */
     public int getISKGreidaValue() {
         return iskGreidaValue;
     }
 
     /**
-     * Gibt den gespeicherten ISK-Wert für Dósir zurück.
      *
-     * @return der gespeicherte ISK-Wert für Dósir
+     *
+     * @return saved ISK-Value for Dósir
      */
     public int getISKDosirValue() {
         return iskDosirValue;
     }
 
     /**
-     * Speichert den ISK-Wert für Dósir.
      *
-     * @param value der ISK-Wert für Dósir
+     *
+     * @param value  ISK-Value for Dósir
      */
     public void setISKDosirValue(int value) {
         this.iskDosirValue = value;
     }
 
     /**
-     * Gibt den gespeicherten ISK-Wert für Flöskur zurück.
      *
-     * @return der gespeicherte ISK-Wert für Flöskur
+     *
+     * @return saved ISK-Values for Flöskur
      */
     public int getISKFloskurValue() {
         return iskFloskurValue;
     }
 
     /**
-     * Speichert den ISK-Wert für Flöskur.
      *
-     * @param value der ISK-Wert für Flöskur
+     *
+     * @param value ISK-Value for Flöskur
      */
     public void setISKFloskurValue(int value) {
         this.iskFloskurValue = value;
@@ -100,7 +98,6 @@ public class Floskur {
      */
     public void setAmountDosir(int dosir) {
         this.dosir = dosir;
-        // Aktualisiere auch gleich den ISK-Wert
         this.iskDosirValue = dosir * VALUE_DOSIR;
     }
 
@@ -120,7 +117,6 @@ public class Floskur {
      */
     public void setAmountFloskur(int floskur) {
         this.floskur = floskur;
-        // Aktualisiere auch gleich den ISK-Wert
         this.iskFloskurValue = floskur * VALUE_FLOSKUR;
     }
 
@@ -158,16 +154,14 @@ public class Floskur {
      * @return total amount in the selected currency or -1 on error.
      */
     public double getValueInSelectedCurrency() {
-        // If the selected currency is ISK, return the total ISK value.
         if ("ISK".equalsIgnoreCase(selectedCurrency)) {
             return getISKSamtals();
         }
 
         try {
-            // Uses the CurrencyConverter class to convert ISK to the desired currency.
             return currencyConverter.convert(getISKSamtals(), selectedCurrency);
         } catch (Exception e) {
-            System.err.println("Fehler bei der Währungsumrechnung: " + e.getMessage());
+            System.err.println("Error with conversion: " + e.getMessage());
             return -1;
         }
     }
@@ -210,7 +204,6 @@ public class Floskur {
     public void hreinsa() {
         this.setAmountDosir(0);
         this.setAmountFloskur(0);
-        // Auch die ISK-Werte zurücksetzen
         this.iskDosirValue = 0;
         this.iskFloskurValue = 0;
     }

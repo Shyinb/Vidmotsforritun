@@ -43,7 +43,6 @@ public class FloskurController {
     @FXML
     private Label ISKGreida;
 
-    // Neue UI-Elemente
     @FXML
     private ComboBox<String> currencyComboBox;
 
@@ -52,11 +51,10 @@ public class FloskurController {
 
     @FXML
     public void initialize() {
-        // Währungen in ComboBox laden
+
         currencyComboBox.setItems(FXCollections.observableArrayList("ISK", "EUR", "USD"));
         currencyComboBox.setValue("ISK");
 
-        // Initialisiere alle Labels mit Standardwerten
         updateCurrencyLabels();
         updateSamtals();
         updateExchangeRateLabel();
@@ -79,13 +77,11 @@ public class FloskurController {
     private void onGreida(ActionEvent event) {
         int oldAmountGreida = Integer.parseInt(amountGreida.getText().isEmpty() ? "0" : amountGreida.getText());
 
-        // Verwende den bereits gespeicherten ISK-Wert oder initialisiere ihn
         int oldISKGreida = floskur.getISKGreidaValue();
 
         int newAmountGreida = floskur.getAmountGreida(oldAmountGreida);
         int newISKGreida = floskur.getISKGreida(oldISKGreida);
 
-        // Speichere den neuen ISK-Wert
         floskur.setISKGreidaValue(newISKGreida);
 
         amountGreida.setText(String.valueOf(newAmountGreida));
@@ -154,7 +150,6 @@ public class FloskurController {
         String selectedCurrency = currencyComboBox.getValue();
         floskur.setSelectedCurrency(selectedCurrency);
 
-        // Aktualisiere alle Labels mit der neuen Währung, auch wenn sie leer sind.
         updateCurrencyLabels();
         updateSamtals();
         updateExchangeRateLabel();
@@ -162,13 +157,13 @@ public class FloskurController {
     }
 
     /**
-     * Aktualisiert die Labels ISKDosir, ISKFloskur und ISKSamtals.
-     * Verwendet die gespeicherten ISK-Werte als Basis für die Umrechnung.
+     * Updates the labels ISKDosir, ISKFloskur, ISKSamtals.
+     * Uses the saved values for conversions
      */
     private void updateCurrencyLabels() {
         String currencySymbol = floskur.getSelectedCurrency();
 
-        // Aktualisierung für ISKDosir
+
         int iskDosirValue = floskur.getISKDosirValue();
         if (iskDosirValue == 0) {
             ISKDosir.setText("0 " + currencySymbol);
@@ -185,7 +180,7 @@ public class FloskurController {
             }
         }
 
-        // Aktualisierung für ISKFloskur
+
         int iskFloskurValue = floskur.getISKFloskurValue();
         if (iskFloskurValue == 0) {
             ISKFloskur.setText("0 " + currencySymbol);
@@ -202,7 +197,7 @@ public class FloskurController {
             }
         }
 
-        // Aktualisierung für ISKSamtals
+
         int iskSamtalsValue = floskur.getISKSamtals();
         if (iskSamtalsValue == 0) {
             ISKSamtals.setText("0 " + currencySymbol);
@@ -221,8 +216,7 @@ public class FloskurController {
     }
 
     /**
-     * Aktualisiert das Greiða-Label (ISKGreida) mit der neuen Währung,
-     * auch wenn das Label nicht leer ist.
+     * updates ISKGreida
      */
     private void updateGreidaLabel() {
         String currencySymbol = floskur.getSelectedCurrency();
@@ -231,10 +225,9 @@ public class FloskurController {
                 "0".equals(ISKGreida.getText().replaceAll("[^0-9]", "").trim())) {
             ISKGreida.setText("0 " + currencySymbol);
         } else {
-            // Hier müssen wir den ISK-Wert speichern, nicht den konvertierten Wert
-            // Wir speichern den ISK-Wert als Eigenschaft des Floskur-Objekts
+
             try {
-                // Benutze den gespeicherten ISK-Wert, falls verfügbar
+
                 int iskValue = floskur.getISKGreidaValue();
 
                 if ("ISK".equalsIgnoreCase(currencySymbol)) {
@@ -250,11 +243,10 @@ public class FloskurController {
     }
 
     /**
-     * Hilfsmethode zum Aktualisieren eines Labels mit der aktuellen Währung.
-     * Liest den numerischen Teil des Label-Texts aus, konvertiert diesen falls nötig und setzt den neuen Text.
      *
-     * @param label          das zu aktualisierende Label
-     * @param currencySymbol die neue Währung
+     *
+     * @param label          label that is getting updated
+     * @param currencySymbol new currency
      */
     private void updateLabelWithCurrency(Label label, String currencySymbol) {
         String currentText = label.getText();
@@ -276,7 +268,7 @@ public class FloskurController {
     }
 
     /**
-     * Aktualisiert das Samtals-Label (ISKSamtals) mit den korrekten Werten.
+     * Updates ISKSamtals
      */
     private void updateSamtals() {
         int totalAmount = floskur.getAmountSamtals();
@@ -291,15 +283,13 @@ public class FloskurController {
                 double convertedAmount = floskur.getValueInSelectedCurrency();
                 ISKSamtals.setText(df.format(convertedAmount) + " " + currencySymbol);
             } catch (Exception e) {
-                ISKSamtals.setText("Fehler");
-                System.err.println("Fehler bei der Währungsumrechnung: " + e.getMessage());
+                ISKSamtals.setText("Error");
+                System.err.println("Error with conversion: " + e.getMessage());
             }
         }
     }
 
-    /**
-     * Aktualisiert das Wechselkurs-Label
-     */
+
     private void updateExchangeRateLabel() {
         String selectedCurrency = floskur.getSelectedCurrency();
 
@@ -312,15 +302,14 @@ public class FloskurController {
             double rate = floskur.currencyConverter.getExchangeRate(selectedCurrency);
             exchangeRateLabel.setText("1 " + selectedCurrency + " = " + df.format(rate) + " ISK");
         } catch (Exception e) {
-            exchangeRateLabel.setText("Fehler bei der Währungsumrechnung");
+            exchangeRateLabel.setText("Error with conversion");
         }
     }
     /**
-     * Liest und verarbeitet die Eingabe des Benutzers.
-     * Prüft, ob der eingegebene Wert positiv ist, und aktualisiert das entsprechende Label.
+     * Reads and tests if the user input is valid
      *
-     * @param textField die Eingabe des Benutzers
-     * @param isDosir   true, wenn der eingegebene Wert für Dosir ist, false wenn für Floskur
+     * @param textField user input
+     * @param isDosir   true if input is for dosir, false for Floskur
      */
     private void inputAmount(TextField textField, boolean isDosir) {
         String input = textField.getText().trim();

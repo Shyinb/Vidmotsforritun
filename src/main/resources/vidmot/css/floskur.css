@@ -1,56 +1,56 @@
-/* Overall layout and GridPane styling */
+
 GridPane {
     -fx-hgap: 15px;
     -fx-vgap: 15px;
     -fx-padding: 20px;
-    -fx-background-color: #f7f2ea; /* Warmes, helles Beige */
+    -fx-background-color: #f7f2ea;
     -fx-background-radius: 12px;
 }
 
-/* Modern styling for Labels */
+
 Label {
     -fx-pref-width: 150px;
     -fx-pref-height: 30px;
     -fx-alignment: CENTER_LEFT;
     -fx-padding: 5px 10px;
-    -fx-text-fill: #5d4b36; /* Warmes, dunkles Braun für Text */
-    -fx-background-color: #faf5ef; /* Helles, warmes Cremeweiß */
+    -fx-text-fill: #5d4b36;
+    -fx-background-color: #faf5ef;
     -fx-background-radius: 8px;
-    -fx-border-color: #e2d5c3; /* Hellbraune Ränder */
+    -fx-border-color: #e2d5c3;
     -fx-border-radius: 8px;
     -fx-border-width: 1px;
     -fx-font-family: "Segoe UI", sans-serif;
     -fx-font-size: 14px;
-    -fx-wrap-text: true; /* Ensures all text can wrap if needed */
+    -fx-wrap-text: true;
 }
 
-/* Modern styling for TextFields */
+
 TextField {
     -fx-pref-width: 150px;
     -fx-pref-height: 35px;
     -fx-alignment: CENTER_LEFT;
     -fx-padding: 5px 10px;
-    -fx-background-color: #faf5ef; /* Helles, warmes Cremeweiß */
+    -fx-background-color: #faf5ef;
     -fx-background-radius: 8px;
-    -fx-border-color: #d8c7b0; /* Hellbraune Ränder */
+    -fx-border-color: #d8c7b0;
     -fx-border-radius: 8px;
     -fx-border-width: 1px;
     -fx-effect: dropshadow(two-pass-box, rgba(93, 75, 54, 0.1), 2, 0, 0, 1);
     -fx-font-family: "Segoe UI", sans-serif;
     -fx-font-size: 14px;
-    -fx-text-fill: #5d4b36; /* Warmes, dunkles Braun für Text */
+    -fx-text-fill: #5d4b36;
 }
 
-/* Modern styling for Buttons */
+
 Button {
     -fx-pref-width: 150px;
     -fx-pref-height: 35px;
     -fx-alignment: CENTER;
-    -fx-background-color: #6d94b8; /* Warmes, helles Blau */
-    -fx-text-fill: #faf5ef; /* Helles, warmes Cremeweiß für Text */
+    -fx-background-color: #6d94b8;
+    -fx-text-fill: #faf5ef;
     -fx-font-weight: bold;
     -fx-background-radius: 8px;
-    -fx-border-color: #5a85a9; /* Dunkleres Blau für Ränder */
+    -fx-border-color: #5a85a9;
     -fx-border-radius: 8px;
     -fx-border-width: 1px;
     -fx-cursor: hand;
@@ -59,83 +59,78 @@ Button {
     -fx-font-size: 14px;
 }
 
-/* Button hover state */
+
 Button:hover {
-    -fx-background-color: #7ea3c6; /* Leicht helleres Blau beim Hover */
+    -fx-background-color: #7ea3c6;
 }
 
-/* Button pressed state */
+
 Button:pressed {
-    -fx-background-color: #5a85a9; /* Dunkleres Blau beim Drücken */
+    -fx-background-color: #5a85a9;
 }
 
-/* Valid input feedback */
 .input-valid {
-    -fx-border-color: #7ba178; /* Warmes Grün */
+    -fx-border-color: #7ba178;
     -fx-border-width: 2px;
     -fx-background-radius: 8px;
 }
 
-/* Invalid input feedback */
 .input-invalid {
-    -fx-border-color: #c97064; /* Warmes Rot */
+    -fx-border-color: #c97064;
     -fx-border-width: 2px;
     -fx-background-radius: 8px;
 }
 
-/* Styling for ComboBox controls */
 .combo-box {
-    -fx-background-color: #faf5ef; /* Helles, warmes Cremeweiß */
-    -fx-border-color: #d8c7b0; /* Hellbraune Ränder */
+    -fx-background-color: #faf5ef;
+    -fx-border-color: #d8c7b0;
     -fx-border-radius: 8px;
     -fx-background-radius: 8px;
     -fx-padding: 5px;
 }
 
 .combo-box .list-cell {
-    -fx-text-fill: #5d4b36; /* Warmes, dunkles Braun für Text */
+    -fx-text-fill: #5d4b36;
     -fx-background-radius: 5px;
 }
 
 .combo-box-popup .list-view {
-    -fx-background-color: #faf5ef; /* Helles, warmes Cremeweiß */
+    -fx-background-color: #faf5ef;
     -fx-background-radius: 6px;
-    -fx-border-color: #d8c7b0; /* Hellbraune Ränder */
+    -fx-border-color: #d8c7b0;
     -fx-border-radius: 6px;
 }
 
 .combo-box-popup .list-view .list-cell:hover {
-    -fx-background-color: #e8dfcf; /* Leicht dunkleres Beige beim Hover */
-    -fx-text-fill: #5d4b36; /* Warmes, dunkles Braun für Text */
+    -fx-background-color: #e8dfcf;
+    -fx-text-fill: #5d4b36;
 }
 
 .combo-box-popup .list-view .list-cell:selected {
-    -fx-background-color: #d8c7b0; /* Hellbraun für ausgewählte Elemente */
-    -fx-text-fill: #5d4b36; /* Warmes, dunkles Braun für Text */
+    -fx-background-color: #d8c7b0;
+    -fx-text-fill: #5d4b36;
 }
 
 .combo-box:hover {
-    -fx-background-color: #f0e9dd; /* Leicht dunkleres Beige beim Hover */
+    -fx-background-color: #f0e9dd;
 }
 
-/* Exchange rate label with wrapping and modern text style */
 .exchange-rate-label {
     -fx-font-style: italic;
     -fx-font-size: 12px;
-    -fx-text-fill: #8a7864; /* Warmes, mittleres Braun für Text */
+    -fx-text-fill: #8a7864;
     -fx-wrap-text: true;
-    -fx-max-width: 150px;  /* Ensures text stays within the area */
+    -fx-max-width: 150px;
     -fx-padding: 3px;
-    -fx-background-color: transparent; /* Kein Hintergrund für dieses Label */
-    -fx-border-color: transparent; /* Kein Rand für dieses Label */
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
 }
 
-/* Für das Wechselkurs-Label */
 #exchangeRateLabel {
     -fx-font-style: italic;
     -fx-font-size: 12px;
-    -fx-text-fill: #8a7864; /* Warmes, mittleres Braun für Text */
+    -fx-text-fill: #8a7864;
     -fx-wrap-text: true;
-    -fx-background-color: transparent; /* Kein Hintergrund für dieses Label */
-    -fx-border-color: transparent; /* Kein Rand für dieses Label */
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
 }
